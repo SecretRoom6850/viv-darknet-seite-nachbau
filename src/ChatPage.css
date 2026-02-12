@@ -203,4 +203,15 @@
         width: 100%;
         height: 100%;
     }
+
+    .chat-header-bar {
+        padding-top: max(1.5rem, env(safe-area-inset-top));
+        /* Push text below notch/status bar */
+        padding-bottom: 1rem;
+    }
+
+    .chat-content {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+        /* Avoid home indicator overlap */
+    }
 }
