@@ -179,3 +179,54 @@ input:focus {
     max-width: 250px;
   }
 }
+
+/* Reminder Modal Styles */
+.reminder-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.reminder-box {
+  background-color: white;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 4px;
+  /* Slight radius */
+}
+
+.reminder-header {
+  background-color: #55606e;
+  /* Dark slate grey from screenshot */
+  padding: 1.5rem;
+  color: white;
+}
+
+.reminder-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.reminder-body {
+  padding: 2rem;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.reminder-body p {
+  margin: 0;
+}

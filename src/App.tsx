@@ -11,9 +11,12 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isHacking, setIsHacking] = useState(false)
   const [loginError, setLoginError] = useState(false)
+  const [showReminder, setShowReminder] = useState(false)
 
   // Pre-calculated SHA-256 hash for 'isabellagatemartabrunhilde'
   const TARGET_HASH = 'd52c1f04b523dfb3f0454cfac9f7f899a511fea2014ebe280090bee1e5b74f8d';
+
+  const VALID_USERS = ['caesar', 'gaius', 'julius', 'agnus', 'imperator'];
 
   const hashPassword = async (str: string) => {
     const msgBuffer = new TextEncoder().encode(str);
@@ -28,7 +31,7 @@ function App() {
     // Hash the input password to compare with stored hash
     const inputHash = await hashPassword(password);
 
-    if (username.toLowerCase() === 'caesar' && inputHash === TARGET_HASH) {
+    if (VALID_USERS.includes(username.toLowerCase()) && inputHash === TARGET_HASH) {
       setIsHacking(true)
       setLoginError(false)
     } else {
@@ -100,7 +103,23 @@ function App() {
             {loginError && <div style={{ color: '#ff6b6b', marginTop: '10px', fontSize: '0.9rem' }}>Zugangsdaten ungültig.</div>}
 
             <button type="submit" className="login-btn">ANMELDEN</button>
+            <div className="form-footer">
+              <a href="#" className="forgot-password" onClick={(e) => { e.preventDefault(); setShowReminder(true); }}>Passwort-Reminder</a>
+            </div>
           </form>
+
+          {showReminder && (
+            <div className="reminder-overlay" onClick={() => setShowReminder(false)}>
+              <div className="reminder-box" onClick={(e) => e.stopPropagation()}>
+                <div className="reminder-header">
+                  <h3>Login-Erinnerung</h3>
+                </div>
+                <div className="reminder-body">
+                  <p>Passwort: Namen meiner Cousininnen von links nach rechts... Alles zusammen an einem Stück... Bsp: cornelianadinesarahconny</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </main>
     </div>
