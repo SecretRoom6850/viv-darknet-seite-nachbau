@@ -107,21 +107,21 @@ function App() {
               <a href="#" className="forgot-password" onClick={(e) => { e.preventDefault(); setShowReminder(true); }}>Passwort-Reminder</a>
             </div>
           </form>
-
-          {showReminder && (
-            <div className="reminder-overlay" onClick={() => setShowReminder(false)}>
-              <div className="reminder-box" onClick={(e) => e.stopPropagation()}>
-                <div className="reminder-header">
-                  <h3>Login-Erinnerung</h3>
-                </div>
-                <div className="reminder-body">
-                  <p>Passwort: Namen meiner Cousininnen von links nach rechts... Alles zusammen an einem Stück... Bsp: cornelianadinesarahconny</p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </main>
+
+      {showReminder && (
+        <div className="reminder-overlay" onClick={() => setShowReminder(false)}>
+          <div className="reminder-box" onClick={(e) => e.stopPropagation()}>
+            <div className="reminder-header">
+              <h3>Login-Erinnerung</h3>
+            </div>
+            <div className="reminder-body">
+              <p>Passwort: Namen meiner Cousininnen von links nach rechts... Alles zusammen an einem Stück... Bsp: cornelianadinesarahconny</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
