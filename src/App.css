@@ -8,14 +8,26 @@
   box-sizing: border-box;
 }
 
-.header {
-  margin-bottom: 2rem;
-}
-
 .logo {
-  max-width: 300px;
+  max-width: 400px;
+  width: 90%;
   height: auto;
   display: block;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.header {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .login-box {
@@ -29,7 +41,7 @@
   /* Square corners like original */
   padding: 3rem 3rem 3.5rem 3rem;
   width: 100%;
-  max-width: 450px;
+  max-width: 600px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   text-align: left;
   /* Align text left inside box per original screenshot */
@@ -39,18 +51,17 @@
 }
 
 h2 {
-  position: absolute;
-  top: -60px;
-  /* Move OUTSIDE and ABOVE the box */
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
+  position: static;
+  margin: 1.5rem 0 1rem 0;
+  /* More spacing top/bottom */
   font-weight: 600;
   letter-spacing: 2px;
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #ffffff;
   white-space: nowrap;
+  transform: none;
+  text-align: center;
 }
 
 .login-form {

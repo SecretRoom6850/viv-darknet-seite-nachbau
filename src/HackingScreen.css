@@ -1,0 +1,71 @@
+.hacking-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    color: #0f0;
+    /* Hacking Green */
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 9999;
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.terminal-line {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0f0;
+    opacity: 0;
+    animation: typeIn 0.1s forwards;
+}
+
+@keyframes typeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2rem;
+    background-color: #0f0;
+    animation: blink 1s step-end infinite;
+    margin-top: 0.5rem;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* CRT Scanline Effect (Optional but cool) */
+.hacking-container::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+}

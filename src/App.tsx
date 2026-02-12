@@ -2,18 +2,34 @@ import { useState } from 'react'
 import './App.css'
 import { ChatPage } from './ChatPage'
 
+import { HackingScreen } from './HackingScreen'
+
 function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isHacking, setIsHacking] = useState(false)
   const [loginError, setLoginError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Pre-calculated SHA-256 hash for 'isabellagatemartabrunhilde'
+  const TARGET_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+
+  const hashPassword = async (str: string) => {
+    const msgBuffer = new TextEncoder().encode(str);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simple check for demo purposes
-    if (username.toLowerCase() === 'caesar' && password === 'isabellagatemartabrunhilde') {
-      setIsLoggedIn(true)
+
+    // Hash the input password to compare with stored hash
+    const inputHash = await hashPassword(password);
+
+    if (username.toLowerCase() === 'caesar' && inputHash === TARGET_HASH) {
+      setIsHacking(true)
       setLoginError(false)
     } else {
       setLoginError(true)
@@ -28,6 +44,10 @@ function App() {
     )
   }
 
+  if (isHacking) {
+    return <HackingScreen onComplete={() => setIsLoggedIn(true)} />
+  }
+
   return (
     <div className="app-container">
       <header className="header">
@@ -39,8 +59,9 @@ function App() {
       </header>
 
       <main className="main-content">
+        <h2>------ LOGIN ------</h2>
         <div className="login-box">
-          <h2>------ LOGIN ------</h2>
+
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="input-group">
@@ -79,9 +100,6 @@ function App() {
             {loginError && <div style={{ color: '#ff6b6b', marginTop: '10px', fontSize: '0.9rem' }}>Zugangsdaten ungültig.</div>}
 
             <button type="submit" className="login-btn">ANMELDEN</button>
-            <div className="form-footer">
-              <a href="#" className="forgot-password">Passwort-Reminder</a>
-            </div>
           </form>
         </div>
       </main>
