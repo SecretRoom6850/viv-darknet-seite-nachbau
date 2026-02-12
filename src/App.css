@@ -232,3 +232,14 @@ input:focus {
 .reminder-body p {
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .app-container.logged-in {
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    justify-content: flex-start;
+    /* Align top */
+  }
+}
