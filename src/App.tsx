@@ -13,7 +13,7 @@ function App() {
   const [loginError, setLoginError] = useState(false)
 
   // Pre-calculated SHA-256 hash for 'isabellagatemartabrunhilde'
-  const TARGET_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+  const TARGET_HASH = 'd52c1f04b523dfb3f0454cfac9f7f899a511fea2014ebe280090bee1e5b74f8d';
 
   const hashPassword = async (str: string) => {
     const msgBuffer = new TextEncoder().encode(str);
