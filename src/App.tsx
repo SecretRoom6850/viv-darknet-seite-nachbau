@@ -52,7 +52,7 @@ function App() {
     <div className="app-container">
       <header className="header">
         <img
-          src="http://199.247.4.133/wp-content/uploads/elementor/thumbs/web-header-darknet3-pdruk6bxl4xm88hxgm46m6jg6v57k1xwszvnyvv5v4.png"
+          src="/logo.png"
           alt="Darknet Logo"
           className="logo"
         />
