@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import './App.css'
 import { ChatPage } from './ChatPage'
 
@@ -110,7 +111,7 @@ function App() {
         </div>
       </main>
 
-      {showReminder && (
+      {showReminder && createPortal(
         <div className="reminder-overlay" onClick={() => setShowReminder(false)}>
           <div className="reminder-box" onClick={(e) => e.stopPropagation()}>
             <div className="reminder-header">
@@ -120,7 +121,8 @@ function App() {
               <p>Passwort: Namen meiner Cousininnen von links nach rechts... Alles zusammen an einem Stück... Bsp: cornelianadinesarahconny</p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )
